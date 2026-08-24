@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TerraHike — Hiking & Outdoor Gear</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --green-dark: #173b2a;
+      --green: #2f6b4f;
+      --green-light: #dcebdd;
+      --cream: #f5f1e8;
+      --white: #ffffff;
+      --text: #243027;
+      --muted: #6b756e;
+      --orange: #d9783c;
+      --shadow: 0 15px 40px rgba(23, 59, 42, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(23, 59, 42, 0.92);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      color: white;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #9ed08c;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      color: white;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #a8d995;
+    }
+
+    .nav-btn {
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: var(--orange);
+      color: white;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 150px 7% 80px;
+      display: flex;
+      align-items: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(12, 34, 24, .88), rgba(12, 34, 24, .25)),
+        linear-gradient(135deg, #315c46, #102b1d);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      right: -150px;
+      top: 100px;
+      background: rgba(153, 203, 133, .12);
+    }
+
+    .hero-content {
+      max-width: 680px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 15px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 30px;
+      background: rgba(255,255,255,.08);
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 7vw, 82px);
+      line-height: 1.02;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #a9d890;
+    }
+
+    .hero p {
+      max-width: 570px;
+      font-size: 18px;
+      color: #dbe5dc;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: #c66731;
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,.4);
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--green-dark);
+    }
+
+    /* GENERAL */
+    section {
+      padding: 100px 7%;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 50px;
+    }
+
+    .section-heading .label {
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 50px);
+      line-height: 1.1;
+      color: var(--green-dark);
+      margin: 10px 0 15px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* GEAR */
+    .gear-section {
+      background: #fff;
+    }
+
+    .gear-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .gear-card {
+      background: #fafaf7;
+      border: 1px solid #e7e8e1;
+      border-radius: 18px;
+      overflow: hidden;
+      transition: .35s;
+    }
+
+    .gear-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .gear-image {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 75px;
+      background: linear-gradient(135deg, #dfe9dc, #eef2e8);
+    }
+
+    .gear-info {
+      padding: 22px;
+    }
+
+    .gear-info small {
+      color: var(--orange);
+      font-weight: bold;
+    }
+
+    .gear-info h3 {
+      margin: 7px 0;
+      color: var(--green-dark);
+    }
+
+    .gear-info p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: bold;
+      color: var(--green);
+    }
+
+    .price a {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--green-dark);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* FEATURES */
+    .features {
+      background: var(--green-dark);
+      color: white;
+    }
+
+    .features .section-heading h2 {
+      color: white;
+    }
+
+    .features .section-heading p {
+      color: #cbd8cf;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .feature {
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+    }
+
+    .feature-icon {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .feature h3 {
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: #bfcfc4;
+      font-size: 14px;
+    }
+
+    /* TIPS */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .tip-main {
+      padding: 45px;
+      border-radius: 20px;
+      background: #dcebdd;
+    }
+
+    .tip-main h3 {
+      font-size: 30px;
+      color: var(--green-dark);
+      margin-bottom: 15px;
+    }
+
+    .tip-main p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .tip-list {
+      list-style: none;
+    }
+
+    .tip-list li {
+      margin: 13px 0;
+      padding-left: 28px;
+      position: relative;
+    }
+
+    .tip-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .tip-side {
+      padding: 40px;
+      border-radius: 20px;
+      background: var(--orange);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .tip-side h3 {
+      font-size: 30px;
+      line-height: 1.2;
+      margin-bottom: 15px;
+    }
+
+    .tip-side p {
+      color: #ffe8d9;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 80px 7%;
+      background: #fff;
+      text-align: center;
+    }
+
+    .cta-box {
+      max-width: 950px;
+      margin: auto;
+      padding: 70px 30px;
+      border-radius: 25px;
+      background:
+        linear-gradient(135deg, rgba(23,59,42,.95), rgba(47,107,79,.95));
+      color: white;
+    }
+
+    .cta h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: #dce8df;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 7%;
+      background: #10291d;
+      color: #aebeb3;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      .gear-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        padding: 17px 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 130px 6% 70px;
+      }
+
+      section {
+        padding: 70px 6%;
+      }
+
+      .gear-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gear-image {
+        height: 190px;
+      }
+
+      .tip-main,
+      .tip-side {
+        padding: 30px;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#" class="logo">Terra<span>Hike</span></a>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#gear">Gear</a></li>
+      <li><a href="#tips">Tips</a></li>
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#contact" class="nav-btn">Mulai Hiking</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <span class="eyebrow">EXPLORE • HIKE • REPEAT</span>
+
+      <h1>
+        Temukan Jejakmu.<br>
+        <span>Taklukkan Alam.</span>
+      </h1>
+
+      <p>
+        Panduan hiking, rekomendasi perlengkapan outdoor, dan inspirasi
+        petualangan untuk menemani setiap langkahmu menuju puncak.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#gear" class="btn btn-primary">Lihat Gear</a>
+        <a href="#tips" class="btn btn-outline">Tips Pendakian</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- GEAR -->
+  <section class="gear-section" id="gear">
+    <div class="section-heading">
+      <span class="label">Outdoor Essentials</span>
+      <h2>Gear pilihan untuk petualanganmu.</h2>
+      <p>
+        Perlengkapan yang tepat membuat perjalanan lebih nyaman,
+        aman, dan menyenangkan.
+      </p>
+    </div>
+
+    <div class="gear-grid">
+
+      <article class="gear-card">
+        <div class="gear-image">🎒</div>
+        <div class="gear-info">
+          <small>BACKPACK</small>
+          <h3>Trail Backpack 40L</h3>
+          <p>
+            Tas hiking ringan dengan kapasitas ideal untuk perjalanan
+            satu hingga dua hari.
+          </p>
+          <div class="price">
+            Rp 899.000
+            <a href="#">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="gear-card">
+        <div class="gear-image">🥾</div>
+        <div class="gear-info">
+          <small>FOOTWEAR</small>
+          <h3>Mountain Trek Boots</h3>
+          <p>
+            Sepatu dengan grip kuat dan perlindungan ekstra untuk
+            medan berbatu dan licin.
+          </p>
+          <div class="price">
+            Rp 1.249.000
+            <a href="#">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="gear-card">
+        <div class="gear-image">⛺</div>
+        <div class="gear-info">
+          <small>SHELTER</small>
+          <h3>Ultralight Tent</h3>
+          <p>
+            Tenda compact dan ringan untuk camping di alam terbuka.
+          </p>
+          <div class="price">
+            Rp 1.599.000
+            <a href="#">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="gear-card">
+        <div class="gear-image">🧥</div>
+        <div class="gear-info">
+          <small>APPAREL</small>
+          <h3>Windbreaker Jacket</h3>
+          <p>
+            Jaket ringan tahan angin untuk menghadapi cuaca gunung
+            yang berubah-ubah.
+          </p>
+          <div class="price">
+            Rp 649.000
+            <a href="#">→</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="about">
+    <div class="section-heading">
+      <span class="label">Why TerraHike</span>
+      <h2>Lebih siap sebelum melangkah.</h2>
+      <p>
+        Kami membantu pendaki mempersiapkan perjalanan dari pemilihan
+        gear hingga perencanaan perjalanan.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+
+      <div class="feature">
+        <div class="feature-icon">🗺️</div>
+        <h3>Trail Guide</h3>
+        <p>
+          Temukan informasi mengenai jalur, tingkat kesulitan,
+          dan persiapan sebelum mendaki.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🏕️</div>
+        <h3>Outdoor Gear</h3>
+        <p>
+          Pilih perlengkapan berdasarkan kebutuhan, medan,
+          durasi perjalanan, dan kondisi cuaca.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🌲</div>
+        <h3>Leave No Trace</h3>
+        <p>
+          Nikmati alam sekaligus menjaga kelestariannya untuk
+          generasi pendaki berikutnya.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section id="tips">
+    <div class="section-heading">
+      <span class="label">Hiking Tips</span>
+      <h2>Persiapkan perjalanan dengan benar.</h2>
+      <p>
+        Pendakian yang menyenangkan dimulai dari persiapan yang matang.
+      </p>
+    </div>
+
+    <div class="tips-grid">
+
+      <div class="tip-main">
+        <h3>Checklist sebelum mendaki</h3>
+        <p>
+          Pastikan kebutuhan dasar berikut sudah siap sebelum berangkat.
+        </p>
+
+        <ul class="tip-list">
+          <li>Cek kondisi cuaca dan jalur pendakian</li>
+          <li>Bawa air minum yang cukup</li>
+          <li>Gunakan sepatu dengan grip yang baik</li>
+          <li>Siapkan first aid kit</li>
+          <li>Bawa headlamp dan baterai cadangan</li>
+          <li>Beritahu orang lain mengenai rencana perjalanan</li>
+        </ul>
+      </div>
+
+      <div class="tip-side">
+        <h3>“The mountains are calling.”</h3>
+        <p>
+          Jangan hanya mengejar puncak. Nikmati perjalanan,
+          hormati alam, dan pulang dengan selamat.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="cta-box">
+      <h2>Ready for your next adventure?</h2>
+      <p>
+        Siapkan gear-mu, pilih jalur favoritmu, dan mulai petualangan
+        berikutnya bersama TerraHike.
+      </p>
+      <a href="#gear" class="btn btn-primary">Explore Gear →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <strong>TerraHike</strong><br>
+      Hiking • Outdoor • Adventure
+    </div>
+
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#gear">Gear</a>
+      <a href="#tips">Tips</a>
+      <a href="#about">About</a>
+    </div>
+
+    <div>
+      © 2026 TerraHike
+    </div>
+  </footer>
+
+</body>
+</html>
