@@ -1,371 +1,570 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Outdoor Adventure Store</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+```css
+/* ================================
+   RESET & DASAR
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background:#eef5ee;
-    color:#333;
-    line-height:1.6;
+html {
+    scroll-behavior: smooth;
 }
 
-header{
-    background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-    url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80');
-    background-size:cover;
-    background-position:center;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #eef5ee;
+    color: #333;
+    line-height: 1.6;
 }
 
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 8%;
-    background:rgba(0,0,0,.3);
-    position:sticky;
-    top:0;
+
+/* ================================
+   HEADER / HERO
+================================ */
+header {
+    min-height: 100vh;
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.55)
+        ),
+        url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
 }
 
-.logo{
-    color:#fff;
-    font-size:28px;
-    font-weight:bold;
+
+/* ================================
+   NAVBAR
+================================ */
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 8%;
+
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-nav ul{
-    display:flex;
-    list-style:none;
+.logo {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
-nav ul li{
-    margin-left:25px;
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 28px;
 }
 
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    transition:.3s;
+nav ul li {
+    margin: 0;
 }
 
-nav ul li a:hover{
-    color:#9be15d;
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+
+    position: relative;
+    transition: 0.3s ease;
 }
 
-.hero{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    color:white;
-    text-align:center;
-    padding:20px;
+/* Garis animasi pada menu */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: #9be15d;
+    transition: 0.3s ease;
 }
 
-.hero h1{
-    font-size:60px;
-    margin-bottom:20px;
+nav ul li a:hover {
+    color: #9be15d;
 }
 
-.hero p{
-    max-width:700px;
-    font-size:20px;
+nav ul li a:hover::after {
+    width: 100%;
 }
 
-.btn{
-    margin-top:35px;
-    display:inline-block;
-    background:#2e7d32;
-    color:white;
-    text-decoration:none;
-    padding:15px 35px;
-    border-radius:40px;
-    transition:.3s;
-    font-weight:bold;
+
+/* ================================
+   HERO
+================================ */
+.hero {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    color: white;
+    text-align: center;
+
+    padding: 30px 20px;
 }
 
-.btn:hover{
-    background:#1b5e20;
+.hero h1 {
+    max-width: 1000px;
+
+    font-size: clamp(40px, 6vw, 70px);
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
 }
 
-section{
-    padding:70px 8%;
+.hero p {
+    max-width: 750px;
+    font-size: 20px;
+
+    color: #f5f5f5;
+
+    text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-.title{
-    text-align:center;
-    margin-bottom:40px;
+
+/* ================================
+   BUTTON
+================================ */
+.btn {
+    margin-top: 30px;
+
+    display: inline-block;
+
+    background: #2e7d32;
+    color: white;
+
+    text-decoration: none;
+
+    padding: 14px 32px;
+
+    border-radius: 50px;
+
+    font-weight: bold;
+    letter-spacing: 0.5px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+    transition: all 0.3s ease;
 }
 
-.title h2{
-    font-size:36px;
-    color:#1b5e20;
+.btn:hover {
+    background: #1b5e20;
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
+
+/* ================================
+   SECTION
+================================ */
+section {
+    padding: 80px 8%;
 }
 
-.card{
-    background:white;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 8px 18px rgba(0,0,0,.1);
-    transition:.3s;
+.title {
+    text-align: center;
+    margin-bottom: 45px;
 }
 
-.card:hover{
-    transform:translateY(-8px);
+.title h2 {
+    font-size: 38px;
+    color: #1b5e20;
+
+    margin-bottom: 10px;
 }
 
-.card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
+.title p {
+    color: #666;
+    font-size: 17px;
 }
 
-.card-content{
-    padding:20px;
+
+/* ================================
+   PRODUK
+================================ */
+.products {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 30px;
 }
 
-.card-content h3{
-    color:#1b5e20;
-    margin-bottom:10px;
+.card {
+    background: white;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.1);
+
+    transition: all 0.35s ease;
 }
 
-.price{
-    color:#e65100;
-    font-size:22px;
-    font-weight:bold;
-    margin:10px 0;
+.card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.18);
 }
 
-.about{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:40px;
-    align-items:center;
+.card img {
+    width: 100%;
+    height: 230px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.5s ease;
 }
 
-.about img{
-    width:100%;
-    border-radius:15px;
+.card:hover img {
+    transform: scale(1.05);
 }
 
-.about-text h2{
-    color:#1b5e20;
-    margin-bottom:20px;
+.card-content {
+    padding: 25px;
 }
 
-.feature{
-    background:#1b5e20;
-    color:white;
+.card-content h3 {
+    color: #1b5e20;
+
+    font-size: 21px;
+
+    margin-bottom: 10px;
 }
 
-.feature-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
+.card-content p {
+    color: #666;
+
+    font-size: 15px;
+
+    min-height: 70px;
 }
 
-.box{
-    background:rgba(255,255,255,.08);
-    padding:25px;
-    border-radius:12px;
-    text-align:center;
+
+/* ================================
+   HARGA
+================================ */
+.price {
+    color: #e65100;
+
+    font-size: 23px;
+    font-weight: bold;
+
+    margin: 15px 0;
 }
 
-.box h3{
-    margin:15px 0;
+
+/* ================================
+   TENTANG
+================================ */
+.about {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 50px;
+
+    align-items: center;
 }
 
-footer{
-    background:#111;
-    color:#ddd;
-    text-align:center;
-    padding:25px;
+.about img {
+    width: 100%;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.15);
+
+    transition: 0.4s ease;
 }
 
-@media(max-width:768px){
-
-.hero h1{
-    font-size:42px;
+.about img:hover {
+    transform: scale(1.02);
 }
 
-nav{
-    flex-direction:column;
+.about-text h2 {
+    color: #1b5e20;
+
+    font-size: 35px;
+
+    margin-bottom: 20px;
 }
 
-nav ul{
-    margin-top:15px;
+.about-text p {
+    color: #555;
+
+    font-size: 17px;
+
+    margin-bottom: 15px;
 }
 
+
+/* ================================
+   KEUNGGULAN
+================================ */
+.feature {
+    background:
+        linear-gradient(
+            135deg,
+            #1b5e20,
+            #2e7d32
+        );
+
+    color: white;
+
+    position: relative;
+    overflow: hidden;
 }
-</style>
 
-</head>
-<body>
+.feature::before {
+    content: "🌿";
 
-<header>
+    position: absolute;
 
-<nav>
-<div class="logo">🏕 Outdoor Gear</div>
+    font-size: 200px;
 
-<ul>
-<li><a href="#">Home</a></li>
-<li><a href="#">Produk</a></li>
-<li><a href="#">Tentang</a></li>
-<li><a href="#">Kontak</a></li>
-</ul>
+    right: -30px;
+    bottom: -70px;
 
-</nav>
+    opacity: 0.08;
+}
 
-<div class="hero">
-<h1>Jelajahi Alam Tanpa Batas MY TRIP MY ADVENTURE</h1>
-<p>
-Temukan perlengkapan outdoor terbaik mulai dari tenda camping,
-carrier gunung, sepatu hiking, sleeping bag, hingga perlengkapan
-survival dengan kualitas yang terjamin.
-</p>
+.feature .title h2 {
+    color: white;
+}
 
-<a href="#" class="btn">Belanja Sekarang Juga</a>
+.feature .title p {
+    color: #e0e0e0;
+}
 
-</div>
+.feature-grid {
+    display: grid;
 
-</header>
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
 
-<section>
+    gap: 25px;
 
-<div class="title">
-<h2>Produk Unggulan</h2>
-<p>Perlengkapan terbaik untuk petualangan Anda.</p>
-</div>
+    position: relative;
+    z-index: 1;
+}
 
-<div class="products">
+.box {
+    background: rgba(255, 255, 255, 0.1);
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=900&q=80">
-<div class="card-content">
-<h3>Tenda Camping 4 Orang</h3>
-<p>Tahan hujan, ringan, mudah dipasang dan cocok untuk ngecamp.</p>
-<div class="price">Rp1.250.000</div>
-<a href="#" class="btn">Beli</a>
-</div>
-</div>
+    padding: 30px 20px;
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?auto=format&fit=crop&w=900&q=80">
-<div class="card-content">
-<h3>Carrier Gunung 60L</h3>
-<p>Nyaman digunakan untuk pendakian dengan kapasitas besar.</p>
-<div class="price">Rp950.000</div>
-<a href="#" class="btn">Beli</a>
-</div>
-</div>
+    border-radius: 15px;
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=900&q=80">
-<div class="card-content">
-<h3>Sepatu Hiking</h3>
-<p>Grip kuat, anti slip, tahan air dan nyaman digunakan.</p>
-<div class="price">Rp780.000</div>
-<a href="#" class="btn">Beli</a>
-</div>
-</div>
+    text-align: center;
 
-</div>
+    border: 1px solid rgba(255, 255, 255, 0.15);
 
-</section>
+    transition: all 0.3s ease;
+}
 
-<section>
+.box:hover {
+    background: rgba(255, 255, 255, 0.18);
 
-<div class="about">
+    transform: translateY(-7px);
+}
 
-<img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80">
+.box h3 {
+    margin: 15px 0;
 
-<div class="about-text">
-<h2>Tentang Outdoor Adventure</h2>
+    font-size: 20px;
+}
 
-<p>
-Outdoor Adventure merupakan toko perlengkapan outdoor yang menyediakan
-berbagai kebutuhan camping, hiking, trekking, dan kegiatan alam bebas.
-Seluruh produk dipilih dari merek berkualitas sehingga nyaman dan aman
-digunakan di berbagai kondisi medan.
-</p>
+.box p {
+    color: #e8f5e9;
+}
 
-<br>
 
-<p>
-Kami melayani pengiriman ke seluruh Indonesia dengan harga terbaik,
-garansi produk, dan pelayanan yang ramah.
-</p>
+/* ================================
+   FOOTER
+================================ */
+footer {
+    background: #111;
 
-</div>
+    color: #ddd;
 
-</div>
+    text-align: center;
 
-</section>
+    padding: 35px 20px;
+}
 
-<section class="feature">
+footer h3 {
+    color: white;
 
-<div class="title">
-<h2 style="color:white;">Keunggulan Kami</h2>
-</div>
+    font-size: 22px;
 
-<div class="feature-grid">
+    margin-bottom: 10px;
+}
 
-<div class="box">
-<h3>🏕 Produk Original</h3>
-<p>Semua perlengkapan dijamin original dan berkualitas.</p>
-</div>
+footer p {
+    font-size: 14px;
 
-<div class="box">
-<h3>🚚 Pengiriman Cepat</h3>
-<p>Melayani pengiriman ke seluruh Indonesia.</p>
-</div>
+    margin: 5px 0;
 
-<div class="box">
-<h3>💳 Pembayaran Aman</h3>
-<p>Mendukung berbagai metode pembayaran.</p>
-</div>
+    color: #aaa;
+}
 
-<div class="box">
-<h3>⭐ Garansi Produk</h3>
-<p>Produk tertentu mendapatkan garansi resmi.</p>
-</div>
 
-</div>
+/* ================================
+   RESPONSIVE TABLET
+================================ */
+@media (max-width: 768px) {
 
-</section>
+    header {
+        background-attachment: scroll;
+    }
 
-<footer>
+    nav {
+        padding: 15px 5%;
 
-<h3>Outdoor Adventure Store</h3>
+        flex-direction: column;
+        gap: 12px;
+    }
 
-<p>
-Jl. Petualang No. 88 • Indonesia
-</p>
+    .logo {
+        font-size: 24px;
+    }
 
-<p>
-© 2026 Outdoor Adventure. All Rights Reserved.
-</p>
+    nav ul {
+        gap: 18px;
 
-</footer>
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
-</body>
-</html>
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+
+    .title h2 {
+        font-size: 30px;
+    }
+
+    .about-text h2 {
+        font-size: 30px;
+    }
+}
+
+
+/* ================================
+   RESPONSIVE HP
+================================ */
+@media (max-width: 480px) {
+
+    nav {
+        padding: 15px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav ul li a {
+        font-size: 13px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+
+    section {
+        padding: 50px 20px;
+    }
+
+    .card img {
+        height: 200px;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .price {
+        font-size: 20px;
+    }
+
+    .about {
+        gap: 30px;
+    }
+
+    .about-text h2 {
+        font-size: 27px;
+    }
+
+    .about-text p {
+        font-size: 15px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+```
