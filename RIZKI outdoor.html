@@ -1,118 +1,67 @@
-```css
-/* ================================
-   RESET & DASAR
-================================ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
     background: #eef5ee;
     color: #333;
     line-height: 1.6;
 }
 
-
-/* ================================
-   HEADER / HERO
-================================ */
 header {
-    min-height: 100vh;
     background:
-        linear-gradient(
-            rgba(0, 0, 0, 0.55),
-            rgba(0, 0, 0, 0.55)
-        ),
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
         url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80');
 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    height: 100vh;
 
     display: flex;
     flex-direction: column;
 }
 
-
-/* ================================
-   NAVBAR
-================================ */
 nav {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     padding: 20px 8%;
 
-    background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(8px);
+    background: rgba(0,0,0,.3);
 
     position: sticky;
     top: 0;
-    z-index: 1000;
 }
 
 .logo {
-    color: white;
+    color: #fff;
     font-size: 28px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 28px;
 }
 
 nav ul li {
-    margin: 0;
+    margin-left: 25px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-
-    position: relative;
-    transition: 0.3s ease;
-}
-
-/* Garis animasi pada menu */
-nav ul li a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -7px;
-
-    width: 0;
-    height: 2px;
-
-    background: #9be15d;
-    transition: 0.3s ease;
+    transition: .3s;
 }
 
 nav ul li a:hover {
     color: #9be15d;
 }
 
-nav ul li a:hover::after {
-    width: 100%;
-}
-
-
-/* ================================
-   HERO
-================================ */
 .hero {
     flex: 1;
 
@@ -124,35 +73,21 @@ nav ul li a:hover::after {
     color: white;
     text-align: center;
 
-    padding: 30px 20px;
+    padding: 20px;
 }
 
 .hero h1 {
-    max-width: 1000px;
-
-    font-size: clamp(40px, 6vw, 70px);
-    line-height: 1.15;
-
-    margin-bottom: 25px;
-
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+    font-size: 60px;
+    margin-bottom: 20px;
 }
 
 .hero p {
-    max-width: 750px;
+    max-width: 700px;
     font-size: 20px;
-
-    color: #f5f5f5;
-
-    text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-
-/* ================================
-   BUTTON
-================================ */
 .btn {
-    margin-top: 30px;
+    margin-top: 35px;
 
     display: inline-block;
 
@@ -161,214 +96,109 @@ nav ul li a:hover::after {
 
     text-decoration: none;
 
-    padding: 14px 32px;
+    padding: 15px 35px;
+    border-radius: 40px;
 
-    border-radius: 50px;
+    transition: .3s;
 
     font-weight: bold;
-    letter-spacing: 0.5px;
-
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-    transition: all 0.3s ease;
 }
 
 .btn:hover {
     background: #1b5e20;
-    transform: translateY(-3px);
-
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-
-/* ================================
-   SECTION
-================================ */
 section {
-    padding: 80px 8%;
+    padding: 70px 8%;
 }
 
 .title {
     text-align: center;
-    margin-bottom: 45px;
+    margin-bottom: 40px;
 }
 
 .title h2 {
-    font-size: 38px;
+    font-size: 36px;
     color: #1b5e20;
-
-    margin-bottom: 10px;
 }
 
-.title p {
-    color: #666;
-    font-size: 17px;
-}
-
-
-/* ================================
-   PRODUK
-================================ */
 .products {
     display: grid;
 
     grid-template-columns:
         repeat(auto-fit, minmax(260px, 1fr));
 
-    gap: 30px;
+    gap: 25px;
 }
 
 .card {
     background: white;
 
-    border-radius: 18px;
-
+    border-radius: 15px;
     overflow: hidden;
 
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 18px rgba(0,0,0,.1);
 
-    transition: all 0.35s ease;
+    transition: .3s;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.18);
+    transform: translateY(-8px);
 }
 
 .card img {
     width: 100%;
-    height: 230px;
+    height: 220px;
 
     object-fit: cover;
-
-    display: block;
-
-    transition: transform 0.5s ease;
-}
-
-.card:hover img {
-    transform: scale(1.05);
 }
 
 .card-content {
-    padding: 25px;
+    padding: 20px;
 }
 
 .card-content h3 {
     color: #1b5e20;
-
-    font-size: 21px;
-
     margin-bottom: 10px;
 }
 
-.card-content p {
-    color: #666;
-
-    font-size: 15px;
-
-    min-height: 70px;
-}
-
-
-/* ================================
-   HARGA
-================================ */
 .price {
     color: #e65100;
 
-    font-size: 23px;
+    font-size: 22px;
     font-weight: bold;
 
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
-
-/* ================================
-   TENTANG
-================================ */
 .about {
     display: grid;
 
     grid-template-columns:
         repeat(auto-fit, minmax(300px, 1fr));
 
-    gap: 50px;
+    gap: 40px;
 
     align-items: center;
 }
 
 .about img {
     width: 100%;
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.15);
-
-    transition: 0.4s ease;
-}
-
-.about img:hover {
-    transform: scale(1.02);
+    border-radius: 15px;
 }
 
 .about-text h2 {
     color: #1b5e20;
-
-    font-size: 35px;
-
     margin-bottom: 20px;
 }
 
-.about-text p {
-    color: #555;
-
-    font-size: 17px;
-
-    margin-bottom: 15px;
-}
-
-
-/* ================================
-   KEUNGGULAN
-================================ */
 .feature {
-    background:
-        linear-gradient(
-            135deg,
-            #1b5e20,
-            #2e7d32
-        );
-
+    background: #1b5e20;
     color: white;
-
-    position: relative;
-    overflow: hidden;
-}
-
-.feature::before {
-    content: "🌿";
-
-    position: absolute;
-
-    font-size: 200px;
-
-    right: -30px;
-    bottom: -70px;
-
-    opacity: 0.08;
 }
 
 .feature .title h2 {
     color: white;
-}
-
-.feature .title p {
-    color: #e0e0e0;
 }
 
 .feature-grid {
@@ -378,45 +208,22 @@ section {
         repeat(auto-fit, minmax(220px, 1fr));
 
     gap: 25px;
-
-    position: relative;
-    z-index: 1;
 }
 
 .box {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,.08);
 
-    padding: 30px 20px;
+    padding: 25px;
 
-    border-radius: 15px;
+    border-radius: 12px;
 
     text-align: center;
-
-    border: 1px solid rgba(255, 255, 255, 0.15);
-
-    transition: all 0.3s ease;
-}
-
-.box:hover {
-    background: rgba(255, 255, 255, 0.18);
-
-    transform: translateY(-7px);
 }
 
 .box h3 {
     margin: 15px 0;
-
-    font-size: 20px;
 }
 
-.box p {
-    color: #e8f5e9;
-}
-
-
-/* ================================
-   FOOTER
-================================ */
 footer {
     background: #111;
 
@@ -424,147 +231,26 @@ footer {
 
     text-align: center;
 
-    padding: 35px 20px;
-}
-
-footer h3 {
-    color: white;
-
-    font-size: 22px;
-
-    margin-bottom: 10px;
-}
-
-footer p {
-    font-size: 14px;
-
-    margin: 5px 0;
-
-    color: #aaa;
+    padding: 25px;
 }
 
 
-/* ================================
-   RESPONSIVE TABLET
-================================ */
+/* =========================
+   RESPONSIVE / HP
+========================= */
+
 @media (max-width: 768px) {
-
-    header {
-        background-attachment: scroll;
-    }
-
-    nav {
-        padding: 15px 5%;
-
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .logo {
-        font-size: 24px;
-    }
-
-    nav ul {
-        gap: 18px;
-
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    nav ul li a {
-        font-size: 14px;
-    }
-
-    .hero {
-        padding: 40px 20px;
-    }
 
     .hero h1 {
         font-size: 42px;
     }
 
-    .hero p {
-        font-size: 17px;
-    }
-
-    section {
-        padding: 60px 5%;
-    }
-
-    .title h2 {
-        font-size: 30px;
-    }
-
-    .about-text h2 {
-        font-size: 30px;
-    }
-}
-
-
-/* ================================
-   RESPONSIVE HP
-================================ */
-@media (max-width: 480px) {
-
     nav {
-        padding: 15px;
-    }
-
-    .logo {
-        font-size: 21px;
+        flex-direction: column;
     }
 
     nav ul {
-        gap: 12px;
+        margin-top: 15px;
     }
 
-    nav ul li a {
-        font-size: 13px;
-    }
-
-    .hero h1 {
-        font-size: 34px;
-    }
-
-    .hero p {
-        font-size: 15px;
-    }
-
-    .btn {
-        padding: 12px 25px;
-        font-size: 14px;
-    }
-
-    section {
-        padding: 50px 20px;
-    }
-
-    .card img {
-        height: 200px;
-    }
-
-    .card-content {
-        padding: 20px;
-    }
-
-    .price {
-        font-size: 20px;
-    }
-
-    .about {
-        gap: 30px;
-    }
-
-    .about-text h2 {
-        font-size: 27px;
-    }
-
-    .about-text p {
-        font-size: 15px;
-    }
-
-    .feature-grid {
-        grid-template-columns: 1fr;
-    }
 }
-```
