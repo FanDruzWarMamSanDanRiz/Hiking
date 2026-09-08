@@ -1,0 +1,671 @@
+```css
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #eef5ee;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   HEADER / HERO
+======================================== */
+
+header {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.55)
+        ),
+        url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ========================================
+   NAVBAR
+======================================== */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 8%;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    backdrop-filter: blur(8px);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+}
+
+.logo {
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    position: relative;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    transition: 0.3s;
+}
+
+
+/* garis bawah menu */
+
+nav ul li a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: #9be15d;
+
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #9be15d;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    color: white;
+    text-align: center;
+
+    padding: 30px 20px;
+}
+
+.hero h1 {
+    max-width: 1000px;
+
+    font-size: clamp(40px, 6vw, 70px);
+
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        3px 3px 10px rgba(0, 0, 0, 0.8);
+
+    animation: fadeDown 1s ease;
+}
+
+.hero p {
+    max-width: 750px;
+
+    font-size: 20px;
+
+    color: #f5f5f5;
+
+    text-shadow:
+        1px 2px 5px rgba(0, 0, 0, 0.8);
+
+    animation: fadeUp 1.2s ease;
+}
+
+
+/* ========================================
+   BUTTON
+======================================== */
+
+.btn {
+    margin-top: 30px;
+
+    display: inline-block;
+
+    background: #2e7d32;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 14px 35px;
+
+    border-radius: 50px;
+
+    font-weight: bold;
+
+    transition: all 0.3s ease;
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.btn:hover {
+    background: #1b5e20;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ========================================
+   SECTION
+======================================== */
+
+section {
+    padding: 80px 8%;
+}
+
+.title {
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+.title h2 {
+    font-size: 38px;
+
+    color: #1b5e20;
+
+    margin-bottom: 10px;
+}
+
+.title p {
+    color: #666;
+
+    font-size: 17px;
+}
+
+
+/* ========================================
+   PRODUCTS
+======================================== */
+
+.products {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 30px;
+}
+
+.card {
+    background: white;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.1);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+
+/* gambar produk */
+
+.card img {
+    width: 100%;
+
+    height: 230px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.5s ease;
+}
+
+.card:hover img {
+    transform: scale(1.06);
+}
+
+
+/* isi kartu */
+
+.card-content {
+    padding: 25px;
+}
+
+.card-content h3 {
+    color: #1b5e20;
+
+    font-size: 21px;
+
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: #666;
+
+    font-size: 15px;
+
+    min-height: 70px;
+}
+
+
+/* ========================================
+   PRICE
+======================================== */
+
+.price {
+    color: #e65100;
+
+    font-size: 23px;
+
+    font-weight: bold;
+
+    margin: 15px 0;
+}
+
+
+/* ========================================
+   ABOUT
+======================================== */
+
+.about {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 50px;
+
+    align-items: center;
+}
+
+.about img {
+    width: 100%;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.15);
+
+    transition: 0.4s;
+}
+
+.about img:hover {
+    transform: scale(1.02);
+}
+
+.about-text h2 {
+    color: #1b5e20;
+
+    font-size: 35px;
+
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    color: #555;
+
+    font-size: 17px;
+}
+
+
+/* ========================================
+   FEATURE
+======================================== */
+
+.feature {
+    background:
+        linear-gradient(
+            135deg,
+            #1b5e20,
+            #2e7d32
+        );
+
+    color: white;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* dekorasi background */
+
+.feature::before {
+    content: "🌿";
+
+    position: absolute;
+
+    right: -30px;
+    bottom: -70px;
+
+    font-size: 200px;
+
+    opacity: 0.08;
+}
+
+.feature .title {
+    position: relative;
+
+    z-index: 1;
+}
+
+.feature .title h2 {
+    color: white;
+}
+
+.feature .title p {
+    color: #e0e0e0;
+}
+
+
+/* ========================================
+   FEATURE GRID
+======================================== */
+
+.feature-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+
+    position: relative;
+
+    z-index: 1;
+}
+
+.box {
+    background: rgba(255, 255, 255, 0.1);
+
+    padding: 30px 20px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    transition: all 0.3s ease;
+}
+
+.box:hover {
+    background: rgba(255, 255, 255, 0.18);
+
+    transform: translateY(-8px);
+}
+
+.box h3 {
+    margin: 15px 0;
+
+    font-size: 20px;
+}
+
+.box p {
+    color: #e8f5e9;
+
+    font-size: 15px;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+    background: #111;
+
+    color: #ddd;
+
+    text-align: center;
+
+    padding: 35px 20px;
+}
+
+footer h3 {
+    color: white;
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #aaa;
+
+    font-size: 14px;
+
+    margin: 5px 0;
+}
+
+
+/* ========================================
+   ANIMATION
+======================================== */
+
+@keyframes fadeDown {
+
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 768px) {
+
+    header {
+        background-attachment: scroll;
+    }
+
+    nav {
+        padding: 15px 5%;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    nav ul {
+        gap: 18px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+
+    .title h2 {
+        font-size: 30px;
+    }
+
+    .about-text h2 {
+        font-size: 30px;
+    }
+}
+
+
+/* ========================================
+   HP / MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+    nav {
+        padding: 15px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav ul li a {
+        font-size: 13px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+
+        font-size: 14px;
+    }
+
+    section {
+        padding: 50px 20px;
+    }
+
+    .title h2 {
+        font-size: 28px;
+    }
+
+    .card img {
+        height: 200px;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .price {
+        font-size: 20px;
+    }
+
+    .about {
+        gap: 30px;
+    }
+
+    .about-text h2 {
+        font-size: 27px;
+    }
+
+    .about-text p {
+        font-size: 15px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+```
